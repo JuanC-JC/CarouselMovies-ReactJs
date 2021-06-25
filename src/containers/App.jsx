@@ -15,7 +15,19 @@ function App() {
         <Search />
 
         <Categories>
-          <Categorie>
+          <Categorie title='Categoria numero 1'>
+            <Carousel>
+              <CarouselItem />
+              <CarouselItem />
+              <CarouselItem />
+              <CarouselItem />
+              <CarouselItem />
+              <CarouselItem />
+              <CarouselItem />
+              <CarouselItem />
+            </Carousel>
+          </Categorie>
+          <Categorie title='Categoria numero 2'>
             <Carousel>
               <CarouselItem />
               <CarouselItem />

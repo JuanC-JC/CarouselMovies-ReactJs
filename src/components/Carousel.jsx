@@ -3,16 +3,24 @@ import './styles/Carousel.scss';
 
 export default function Carousel({ children }) {
 
+  const carousel = useRef(null);
+  const btnRight = useRef(null);
   const btnLeft = useRef(null);
 
   useEffect(() => {
-    btnLeft.current.addEventListener('click', () => {
-      console.log('test');
+    btnRight.current.addEventListener('click', () => {
+      carousel.current.scrollLeft += 420;
     });
+
+    btnLeft.current.addEventListener('click', () => {
+      carousel.current.scrollLeft -= 420;
+    });
+
+    // return btnRight.current.clearEventListener
   }, []);
 
   return (
-    <div className='categoria__carousel'>
+    <div ref={carousel} className='categoria__carousel'>
       <div className='categoria__items'>
         {children}
       </div>
@@ -21,7 +29,7 @@ export default function Carousel({ children }) {
         <div ref={btnLeft} id='btn-left' name='btn-left' className='categoria__button categoria__button-left'>
           <div className='imagen' />
         </div>
-        <div id='btn-right' name='btn-right' className='categoria__button categoria__button-right'>
+        <div ref={btnRight} id='btn-right' name='btn-right' className='categoria__button categoria__button-right'>
           <div className='imagen' />
         </div>
       </div>
