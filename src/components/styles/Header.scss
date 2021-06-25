@@ -1,0 +1,83 @@
+.cabezera{
+    display: grid;
+    background: #8f57fd;
+    grid-template-columns: 200px auto;
+    align-items: center;
+    justify-items: center;
+    box-shadow: 2px 2px 8px #7442d8;
+    padding: 5px 0 ;
+    
+    &__logo{
+        width: 180px;
+        height: 50px;
+        background: url(../assets/logo-platzi-video-BW2.png) center/cover no-repeat;
+    }
+
+    &__menu{
+        margin: 0 20px;
+        justify-self: end;
+
+        &:hover .menu__list{
+            visibility: visible;
+            transform: translateY(2px);            //mueve en y a la posicion 0 original
+            opacity: 1;                          //asigna opacidad
+            //coloca que todas las transiciones no tengan delay a si la visibilidad es inmediata
+            transition-delay: 0s;               
+        }
+
+    }
+}
+
+.menu__profile{
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+
+    .profile__logo{
+        width: 40px;
+        height: 40px;
+        background: url(../assets/user-icon.png) center/cover no-repeat;
+    }
+
+    .profile__text{
+        margin-left: 10px;
+    }
+
+}   
+
+
+.menu__list{
+    display: flex;
+    visibility: hidden;
+    position: absolute;
+    list-style: none;
+    flex-direction: column;
+    background-color: #8f57fd;
+    margin: 0;
+    opacity: 0;
+    padding: 5px 10px 5px 10px;
+    width: calc(75px + 18px);
+    // parte con una posicion de -20px
+    transform: translateY(-20px);
+
+    //transform dura 0.5s y tiene 0s delay, la opacity tiene 0.5s y 0 delay, la visibilidad 
+    transition: transform 0.3s linear 0s, opacity 0.3s linear 0s, visibility 0s linear 0.3s;
+
+    box-shadow: 2px 2px 8px #7442d8;
+
+    .list__item{
+        padding: 3px 0;
+        a{
+            text-decoration: none;
+            color: white;
+        }
+
+        border-bottom: 1px solid white;
+
+    }
+
+    .list__item:last-of-type{
+        border: 0;
+    }
+
+}

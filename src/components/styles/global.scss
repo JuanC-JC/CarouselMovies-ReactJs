@@ -1,0 +1,17 @@
+body{
+ margin: 0;
+ color: white;
+ font-family: 'Muli', sans-serif;
+ background: #8f57fd;
+}
+
+
+.main{
+  display: flex;
+  flex-direction: column;
+}
+
+//va por fuera del elemento
+::placeholder{
+  color: white;
+}   

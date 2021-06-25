@@ -1,0 +1,73 @@
+@import './Variables.scss';
+
+.categoria{ 
+
+    //contenedor/objeto scroll ->> es utilizado para tener un padding y de esa manera el contendor de items 
+    //permite que sus hijos se extiendan hasta donde el padre superior se encuentra, solo es para poder manera los opacity 
+    //sin tener que usar js ya que no puedo seleccionar todos los hermanos cuando este activo el hover de un item
+    &__carousel{
+        overflow-x: scroll; 
+        scroll-behavior: smooth; //movimiento lento del scroll cuando cambia de posicion ("javascript")
+        padding: 40px 0;       
+
+        &::-webkit-scrollbar{
+            display: none;
+        }
+    }
+
+    //Contenedor de objetos ("item")
+    &__items{
+            
+        display: flex;
+
+        &:hover{
+
+            //bajarle la visibilidad a todos los elementos
+            & .categoria__item{
+                opacity: 0.3;
+                background-color: lightblue;
+            }
+
+            //al elemento seleccionado hay que hacerlo visible
+            & .categoria__item:hover{
+                background: palevioletred;
+                opacity: 1; 
+            }
+        }
+
+    }
+
+    &__buttons{
+        display: flex;
+    }
+
+    &__button{
+        position: absolute;
+        width: 50px;
+        height: $height-category-item;
+        cursor: pointer;
+        z-index: 2;
+        display: flex;
+        align-items: center;
+        border-radius: 15px;
+        margin-bottom: 40px;
+
+        background: url(../assets/play-icon.png) center/contain no-repeat;
+        
+
+        &-left{
+            transform: scaleX(-1);
+            bottom:0px;
+            
+        }
+        &-right{
+            bottom:0px;
+            right: 0;
+        }
+
+        &:hover{
+            background-color: rgba(0,0,0,0.3);
+        }
+    }
+
+}
