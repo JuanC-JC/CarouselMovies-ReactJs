@@ -1,23 +1,18 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 import './styles/Carousel.scss';
 
 export default function Carousel({ children }) {
 
   const carousel = useRef(null);
-  const btnRight = useRef(null);
-  const btnLeft = useRef(null);
+  // const btnRight = useRef(null);
+  // const btnLeft = useRef(null);
 
-  useEffect(() => {
-    btnRight.current.addEventListener('click', () => {
-      carousel.current.scrollLeft += 420;
-    });
-
-    btnLeft.current.addEventListener('click', () => {
-      carousel.current.scrollLeft -= 420;
-    });
-
-    // return btnRight.current.clearEventListener
-  }, []);
+  const handleMoveLeft = () => {
+    carousel.current.scrollLeft -= 420;
+  };
+  const hanldeMoveRight = () => {
+    carousel.current.scrollLeft += 420;
+  };
 
   return (
     <div ref={carousel} className='categoria__carousel'>
@@ -26,10 +21,10 @@ export default function Carousel({ children }) {
       </div>
 
       <div className='categoria__buttons'>
-        <div ref={btnLeft} id='btn-left' name='btn-left' className='categoria__button categoria__button-left'>
+        <div role='button' tabIndex='0' onClick={() => { handleMoveLeft(); }} id='btn-left' name='btn-left' className='categoria__button categoria__button-left'>
           <div className='imagen' />
         </div>
-        <div ref={btnRight} id='btn-right' name='btn-right' className='categoria__button categoria__button-right'>
+        <div role='button' tabIndex='0' onClick={() => { hanldeMoveRight(); }} id='btn-right' name='btn-right' className='categoria__button categoria__button-right'>
           <div className='imagen' />
         </div>
       </div>

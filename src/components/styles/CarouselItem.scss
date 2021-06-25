@@ -1,97 +1,87 @@
-@import './Variables.scss';
+@import "./Variables.scss";
 
-.categoria__item{
-    min-width: $width-category-item;
-    height: $height-category-item;
-    margin-right: 10px;
-    border-radius: 15px;
-    transition: 0.5s transform;
-    overflow: hidden;
-    cursor: pointer;
+.categoria__item {
+  min-width: $width-category-item;
+  height: $height-category-item;
+  margin-right: 10px;
+  border-radius: 15px;
+  transition: 0.5s transform;
+  overflow: hidden;
+  cursor: pointer;
+  // position: relative;
 
-    //seleccion de item 
-    &:hover{
+  //seleccion de item
+  &:hover {
+    //escalar el elemento
+    transform: scale(1.3);
 
-        //escalar el elemento
-        transform: scale(1.3); 
-
-        //para que quede encima de sus hermanos
-        z-index: 1;
-        
-    }
-
-    //el primer item tiene como propiedad transformarse desde la izquierda      
-    &:first-child{
-        transform-origin: center left;
-    }
-
-    &:last-child{
-        transform-origin: center right;
-    }
-
-}
-
-.categoria__item{
-  position: relative;
-  img{
-      object-fit: cover;
-      width: 200px;
-      height: 250px;
-
+    //para que quede encima de sus hermanos
+    z-index: 1;
   }
 
-  .pepe{
-      object-fit: cover;
-      width: 200px;
-      height: 250px;
-
+  //el primer item tiene como propiedad transformarse desde la izquierda
+  &:first-child {
+    transform-origin: center left;
   }
 
-  .item__details{
+  &:last-child {
+    transform-origin: center right;
+  }
+
+  img {
+    object-fit: cover;
+    width: 200px;
+    height: 250px;
+  }
+
+  .item__details {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    visibility: hidden;
+    position: absolute;
+    inset: 0 0 0 0;
+    transition: all 0.3s ease 0s;
+    background: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.9) 0%,
+      rgba(0, 0, 0, 0) 100%
+    );
+    opacity: 0;
+    padding: 10px 10px;
+
+    .details__buttons {
       display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      visibility: hidden;
-      position:absolute;
-      inset: 0 0 0 0;
-      transition: all 0.3s ease 0s;
-      background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%);
-      opacity: 0;
-      padding: 10px 10px;
 
-      .details__buttons{
-          display: flex;
-
-          .details__button{
-              width: 20px;
-              height: 20px;
-              margin-right: 5px;
-          }
-          .details__play{
-
-              background: url(../assets/play-icon.png) center/cover no-repeat;
-          }
-
-          .details__add{
-              background: url(../assets/plus-icon.png) center/cover no-repeat;
-          }
+      .details__button {
+        width: 20px;
+        height: 20px;
+        margin-right: 5px;
+      }
+      .details__play {
+        background: url(../assets/play-icon.png) center/cover no-repeat;
       }
 
-      .details__title{
-          margin: 5px 0;
-          font-size: 0.8rem;
-          
+      .details__add {
+        background: url(../assets/plus-icon.png) center/cover no-repeat;
       }
-      .details__info{
-          margin: 0;
-          font-size: 0.6rem;
-      }
+    }
+
+    .details__title {
+      margin: 5px 0;
+      font-size: 0.8rem;
+    }
+    
+    .details__info {
+      margin: 0;
+      font-size: 0.6rem;
+    }
   }
 
-  &:hover{
-      .item__details{
-          visibility: visible;
-          opacity: 1;
-      }
+  &:hover {
+    .item__details {
+      visibility: visible;
+      opacity: 1;
+    }
   }
 }

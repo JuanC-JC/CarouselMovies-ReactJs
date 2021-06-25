@@ -13,7 +13,6 @@ function App() {
       <Header />
       <main className='main'>
         <Search />
-
         <Categories>
           <Categorie title='Categoria numero 1'>
             <Carousel>
