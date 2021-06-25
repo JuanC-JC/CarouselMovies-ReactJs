@@ -1,0 +1,309 @@
+$width-category-item: 200px;
+$height-category-item: 250px;
+
+body{
+    margin: 0;
+    color: white;
+    font-family: 'Muli', sans-serif;
+    background: #8f57fd;
+}
+
+.cabezera{
+    display: grid;
+    background: #8f57fd;
+    grid-template-columns: 200px auto;
+    align-items: center;
+    justify-items: center;
+    box-shadow: 2px 2px 8px #7442d8;
+    padding: 5px 0 ;
+
+    &__logo{
+        width: 180px;
+        height: 50px;
+        background: url(../assets/logo-platzi-video-BW2.png) center/cover no-repeat;
+    }
+
+    &__menu{
+        margin: 0 20px;
+        justify-self: end;
+
+        &:hover .menu__list{
+            visibility: visible;
+            transform: translateY(2px);            //mueve en y a la posicion 0 original
+            opacity: 1;                          //asigna opacidad
+            //coloca que todas las transiciones no tengan delay a si la visibilidad es inmediata
+            transition-delay: 0s;               
+        }
+
+    }
+}
+
+.menu__profile{
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+
+    .profile__logo{
+        width: 40px;
+        height: 40px;
+        background: url(../assets/user-icon.png) center/cover no-repeat;
+    }
+
+    .profile__text{
+        margin-left: 10px;
+    }
+
+}   
+
+
+.menu__list{
+    display: flex;
+    visibility: hidden;
+    position: absolute;
+    list-style: none;
+    flex-direction: column;
+    background-color: #8f57fd;
+    margin: 0;
+    opacity: 0;
+    padding: 5px 10px 5px 10px;
+    width: calc(75px + 18px);
+    // parte con una posicion de -20px
+    transform: translateY(-20px);
+
+    //transform dura 0.5s y tiene 0s delay, la opacity tiene 0.5s y 0 delay, la visibilidad 
+    transition: transform 0.3s linear 0s, opacity 0.3s linear 0s, visibility 0s linear 0.3s;
+
+    box-shadow: 2px 2px 8px #7442d8;
+
+    .list__item{
+        padding: 3px 0;
+        a{
+            text-decoration: none;
+            color: white;
+        }
+
+        border-bottom: 1px solid white;
+
+    }
+
+    .list__item:last-of-type{
+        border: 0;
+    }
+
+}
+
+
+.principal{
+    display: flex;
+    flex-direction: column;
+
+    .buscar{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 300px;
+
+        &__title{
+            text-align: center;
+            font-size: 2rem;
+        }
+
+        &__input{
+            background-color: rgba(255,255,255,0.1);
+            border: 2px solid white;
+            border-radius: 25px;
+            color: white;
+            font-size: 1rem;
+            height: 50px;   
+            outline: none;
+            padding: 0px 20px;
+            width: 70%;
+
+        }
+    }
+
+}
+
+.categorias{       
+    margin:10px;
+    margin-bottom: 50px;
+
+    .categoria{ 
+        position: relative;
+        &__title{
+            margin: 0;
+        }
+        //contenedor/objeto scroll ->> es utilizado para tener un padding y de esa manera el contendor de items 
+        //permite que sus hijos se extiendan hasta donde el padre superior se encuentra, solo es para poder manera los opacity 
+        //sin tener que usar js ya que no puedo seleccionar todos los hermanos cuando este activo el hover de un item
+        &__carousel{
+            overflow-x: scroll; 
+            scroll-behavior: smooth; //movimiento lento del scroll cuando cambia de posicion ("javascript")
+            padding: 40px 0;       
+
+            &::-webkit-scrollbar{
+                display: none;
+            }
+        }   
+
+        //Contenedor de objetos ("item")
+        &__items{
+            
+            display: flex;
+
+            &:hover{
+
+                //bajarle la visibilidad a todos los elementos
+                & .categoria__item{
+                    opacity: 0.3;
+                    background-color: lightblue;
+                }
+    
+                //al elemento seleccionado hay que hacerlo visible
+                & .categoria__item:hover{
+                    background: palevioletred;
+                    opacity: 1; 
+                }
+            }
+
+        }
+
+        //OBJETO ITEM
+        &__item{
+            min-width: $width-category-item;
+            height: $height-category-item;
+            margin-right: 10px;
+            border-radius: 15px;
+            transition: 0.5s transform;
+            overflow: hidden;
+            cursor: pointer;
+
+            //seleccion de item 
+            &:hover{
+
+                //escalar el elemento
+                transform: scale(1.3); 
+
+                //para que quede encima de sus hermanos
+                z-index: 1;
+                
+            }
+
+            //el primer item tiene como propiedad transformarse desde la izquierda      
+            &:first-child{
+                transform-origin: center left;
+            }
+
+            &:last-child{
+                transform-origin: center right;
+            }
+
+        }
+
+        &__buttons{
+            display: flex;
+        }
+ 
+        &__button{
+            position: absolute;
+            width: 50px;
+            height: $height-category-item;
+            cursor: pointer;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            border-radius: 15px;
+            margin-bottom: 40px;
+
+            background: url(../assets/play-icon.png) center/contain no-repeat;
+            
+    
+            &-left{
+                transform: scaleX(-1);
+                bottom:0px;
+                
+            }
+            &-right{
+                bottom:0px;
+                right: 0;
+            }
+
+            &:hover{
+                background-color: rgba(0,0,0,0.3);
+            }
+        }
+    }
+
+}
+
+.categoria__item{
+    position: relative;
+    img{
+        object-fit: cover;
+        width: 200px;
+        height: 250px;
+
+    }
+
+    .pepe{
+        object-fit: cover;
+        width: 200px;
+        height: 250px;
+
+    }
+
+    .item__details{
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        visibility: hidden;
+        position:absolute;
+        inset: 0 0 0 0;
+        transition: all 0.3s ease 0s;
+        background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%);
+        opacity: 0;
+        padding: 10px 10px;
+
+        .details__buttons{
+            display: flex;
+
+            .details__button{
+                width: 20px;
+                height: 20px;
+                margin-right: 5px;
+            }
+            .details__play{
+
+                background: url(../assets/play-icon.png) center/cover no-repeat;
+            }
+
+            .details__add{
+                background: url(../assets/plus-icon.png) center/cover no-repeat;
+            }
+        }
+
+        .details__title{
+            margin: 5px 0;
+            font-size: 0.8rem;
+            
+        }
+        .details__info{
+            margin: 0;
+            font-size: 0.6rem;
+        }
+    }
+
+    &:hover{
+        .item__details{
+            visibility: visible;
+            opacity: 1;
+        }
+    }
+}
+
+
+//va por fuera del elemento
+::placeholder{
+    color: white;
+}   
