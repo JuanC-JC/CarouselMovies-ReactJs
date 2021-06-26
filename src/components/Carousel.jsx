@@ -7,7 +7,6 @@ export default function Carousel({ children }) {
 
   const handleMoveLeft = () => {
     carousel.current.scrollLeft -= 420;
-    // console.log(datos);
   };
   const hanldeMoveRight = () => {
     carousel.current.scrollLeft += 420;
