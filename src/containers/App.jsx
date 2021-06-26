@@ -8,6 +8,7 @@ import Carousel from '../components/Carousel';
 import CarouselItem from '../components/CarouselItem';
 import data from '../db/data.json';
 
+
 const { initalState } = data;
 
 function App() {
