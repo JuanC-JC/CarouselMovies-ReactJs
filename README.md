@@ -1,6 +1,7 @@
-# Componente carousel con react
+# Carousel movies ReactJs
 
 Se realizo la migracion de el proyecto [CarouselMovies-VanillaJs](https://github.com/JuanC-JC/CarouselMovies-VanillaJs) al framework frontend ReactJs
 
-- [Deploy](https://juanc-jc.github.io/CarouselMovies-VanillaJs/)
-- [Codigo](https://juanc-jc.github.io/ )
+### Links del proyecto
+- [Deploy](https://juanc-jc.github.io/CarouselMovies-ReactJs/)
+- [Repo](https://github.com/JuanC-JC/CarouselMovies-ReactJs )
