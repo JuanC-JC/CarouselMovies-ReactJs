@@ -9,6 +9,9 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'build'),
     filename: 'bundle.js',
+    clean: true,
+    // assetModuleFilename: 'images/[hash][ext][query]',
+    // publicPath: '../',
   },
   resolve: {
     extensions: ['.js', '.jsx'],
@@ -23,18 +26,25 @@ module.exports = {
         },
       },
       {
+        test: /\.(png|jpg)$/i,
+        type: 'asset',
+        generator: {
+          filename: 'static/images/[hash][ext]',
+        },
+      },
+      {
         test: /\.s?css$/i,
         use: [{
           loader: MiniCssExtractPlugin.loader,
+          options: {
+            publicPath: '../../',
+          },
         },
         'css-loader',
         'sass-loader',
         ],
       },
-      {
-        test: /\.(png|jpg)$/i,
-        type: 'asset',
-      },
+
     ],
   },
   plugins: [
@@ -43,7 +53,7 @@ module.exports = {
       filename: './index.html',
     }),
     new MiniCssExtractPlugin({
-      filename: 'assets/[name].css',
+      filename: 'static/styles/[name].css',
     }),
   ],
 };
