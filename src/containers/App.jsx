@@ -6,6 +6,9 @@ import Categories from '../components/Categories';
 import Categorie from '../components/Categorie';
 import Carousel from '../components/Carousel';
 import CarouselItem from '../components/CarouselItem';
+import data from '../db/data.json';
+
+const { initalState } = data;
 
 function App() {
   return (
@@ -14,28 +17,28 @@ function App() {
       <main className='main'>
         <Search />
         <Categories>
-          <Categorie title='Categoria numero 1'>
+          {initalState.mylist.length > 0 && (
+            <Categorie title='Mi categoria'>
+              <Carousel>
+                <CarouselItem />
+                <CarouselItem />
+                <CarouselItem />
+                <CarouselItem />
+                <CarouselItem />
+                <CarouselItem />
+                <CarouselItem />
+                <CarouselItem />
+              </Carousel>
+            </Categorie>
+          )}
+          <Categorie title='Trends'>
             <Carousel>
-              <CarouselItem />
-              <CarouselItem />
-              <CarouselItem />
-              <CarouselItem />
-              <CarouselItem />
-              <CarouselItem />
-              <CarouselItem />
-              <CarouselItem />
+              {initalState.trends.map((item) => <CarouselItem key={item.id} {...item} />)}
             </Carousel>
           </Categorie>
-          <Categorie title='Categoria numero 2'>
+          <Categorie title='Originals'>
             <Carousel>
-              <CarouselItem />
-              <CarouselItem />
-              <CarouselItem />
-              <CarouselItem />
-              <CarouselItem />
-              <CarouselItem />
-              <CarouselItem />
-              <CarouselItem />
+              {initalState.originals.map((item) => <CarouselItem key={item.id} {...item} />)}
             </Carousel>
           </Categorie>
         </Categories>

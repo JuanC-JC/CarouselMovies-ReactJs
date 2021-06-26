@@ -31,12 +31,6 @@ module.exports = {
         'sass-loader',
         ],
       },
-      // {
-      //   test: /\.html$/i,
-      //   use: {
-      //     loader: 'html-loader',
-      //   },
-      // },
       {
         test: /\.(png|jpg)$/i,
         type: 'asset',
@@ -51,13 +45,5 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: 'assets/[name].css',
     }),
-    // new CopyPlugin({
-    //   patterns: [
-    //     {
-    //       from: path.resolve(__dirname, 'src', 'components/assets'), //copiar todas las imagenes de assets
-    //       to: 'assets/img',
-    //     },
-    //   ],
-    // }),
   ],
 };

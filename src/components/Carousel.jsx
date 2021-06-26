@@ -4,15 +4,16 @@ import './styles/Carousel.scss';
 export default function Carousel({ children }) {
 
   const carousel = useRef(null);
-  // const btnRight = useRef(null);
-  // const btnLeft = useRef(null);
 
   const handleMoveLeft = () => {
     carousel.current.scrollLeft -= 420;
+    // console.log(datos);
   };
   const hanldeMoveRight = () => {
     carousel.current.scrollLeft += 420;
   };
+
+  // const [videos, setVideos] = useState([]);
 
   return (
     <div ref={carousel} className='categoria__carousel'>
