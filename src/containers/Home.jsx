@@ -1,41 +1,33 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import '../components/styles/global.scss';
 import Search from '../components/Search';
 import Categories from '../components/Categories';
 import Categorie from '../components/Categorie';
 import Carousel from '../components/Carousel';
 import CarouselItem from '../components/CarouselItem';
-import data from '../db/data.json';
 
-const { initalState } = data;
+function Home({ myList, trends, originals }) {
 
-function Home() {
   return (
     <section className='main'>
       <Search />
       <Categories>
-        {initalState.mylist.length > 0 && (
+        {myList.length > 0 && (
           <Categorie title='Mi categoria'>
             <Carousel>
-              <CarouselItem />
-              <CarouselItem />
-              <CarouselItem />
-              <CarouselItem />
-              <CarouselItem />
-              <CarouselItem />
-              <CarouselItem />
-              <CarouselItem />
+              {myList.map((item) => <CarouselItem key={item.id} isList={true} {...item} />)}
             </Carousel>
           </Categorie>
         )}
         <Categorie title='Trends'>
           <Carousel>
-            {initalState.trends.map((item) => <CarouselItem key={item.id} {...item} />)}
+            {trends.map((item) => <CarouselItem key={item.id} {...item} />)}
           </Carousel>
         </Categorie>
         <Categorie title='Originals'>
           <Carousel>
-            {initalState.originals.map((item) => <CarouselItem key={item.id} {...item} />)}
+            {originals.map((item) => <CarouselItem key={item.id} {...item} />)}
           </Carousel>
         </Categorie>
       </Categories>
@@ -43,5 +35,14 @@ function Home() {
   );
 }
 
-export default Home;
+//pasar props (al componente)
+const mapStateToProps = (state) => {
+  return {
+    myList: state.myList,
+    trends: state.trends,
+    originals: state.originals,
+  };
+};
 
+//exportar home conectado
+export default connect(mapStateToProps, null)(Home);

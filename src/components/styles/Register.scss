@@ -1,15 +1,15 @@
 .register {
-  background-image: linear-gradient(#21c08b, #8f57fd);
+  // background-image: linear-gradient(#21c08b, #8f57fd);
   display: flex;
   align-items: center;
   flex-direction: column;
   justify-content: center;
   padding: 0px 30px;
-  min-height: calc(100vh - 200px); /* El ancho será igual al tamaño de todo el height menos 200px (100px del header + 100px del footer) */
+  min-height: calc(100vh - 82px); /* El ancho será igual al tamaño de todo el height menos 200px (100px del header + 100px del footer) */
 }
 
 .register__container {
-  background-color: rgba(255,255,255,0.1);
+  background-color: rgba(255,255,255,0.05);
   border: 2px solid white;
   border-radius: 40px;
   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
@@ -17,14 +17,22 @@
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  min-height: 600px;
-  padding: 60px 68px 40px;
+  min-height: 450px;
+  padding: 40px 50px 40px;
   width: 300px;
+
+  &>h2{
+    margin: 10px 0px 20px;
+  }
 }
 
 .register__container--form {
   display: flex;
   flex-direction: column;
+
+  & button{
+    margin-top: 20px;
+  }
 }
 
 .register__container a {

@@ -1,11 +1,12 @@
 .cabezera{
     display: grid;
-    background: #8f57fd;
     grid-template-columns: 200px auto;
     align-items: center;
     justify-items: center;
-    box-shadow: 2px 2px 8px #7442d8;
+    box-shadow: 0px 2px 10px #382068;
     padding: 5px 0 ;
+    margin-bottom:15px;
+    width: 100%;
     
     &__logo{
         width: 180px;
@@ -14,15 +15,14 @@
     }
 
     &__menu{
-        margin: 0 20px;
+        position: relative;
         justify-self: end;
 
         &:hover .menu__list{
             visibility: visible;
             transform: translateY(2px);            //mueve en y a la posicion 0 original
             opacity: 1;                          //asigna opacidad
-            //coloca que todas las transiciones no tengan delay a si la visibilidad es inmediata
-            transition-delay: 0s;               
+            transition-delay: 0s;                  //coloca que todas las transiciones no tengan delay a si la visibilidad es inmediata
         }
 
     }
@@ -36,11 +36,12 @@
     .profile__logo{
         width: 40px;
         height: 40px;
+        border-radius: 20px;
         background: url(../assets/user-icon.png) center/cover no-repeat;
     }
 
     .profile__text{
-        margin-left: 10px;
+        margin: 0 10px;
     }
 
 }   
@@ -49,25 +50,28 @@
 .menu__list{
     display: flex;
     visibility: hidden;
+    box-sizing: border-box;
     position: absolute;
     list-style: none;
     flex-direction: column;
-    background-color: #8f57fd;
+    background-color: #14143c;
     margin: 0;
     opacity: 0;
-    padding: 5px 10px 5px 10px;
-    width: calc(75px + 18px);
-    // parte con una posicion de -20px
+    padding: 0;
+    left: -10px;
+    padding: 5px 10px 5px 20px;
+    width: calc(100% + 10px);
     transform: translateY(-20px);
 
     //transform dura 0.5s y tiene 0s delay, la opacity tiene 0.5s y 0 delay, la visibilidad 
     transition: transform 0.3s linear 0s, opacity 0.3s linear 0s, visibility 0s linear 0.3s;
 
-    box-shadow: 2px 2px 8px #7442d8;
+    // box-shadow: 2px 2px 8px #7442d8;
 
     .list__item{
-        padding: 3px 0;
-        a{
+        padding: 5px 0;
+        a{  
+            word-wrap: break-word;
             text-decoration: none;
             color: white;
         }
@@ -78,5 +82,15 @@
 
     .list__item:last-of-type{
         border: 0;
+    }
+}
+
+
+@media (min-width:420px){
+    .menu__profile{
+        
+        .profile__text{
+            margin: 0 20px;
+        }
     }
 }

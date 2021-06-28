@@ -8,7 +8,8 @@
     &__carousel{
         overflow-x: scroll; 
         scroll-behavior: smooth; //movimiento lento del scroll cuando cambia de posicion ("javascript")
-        padding: 40px 0;       
+        padding: 40px 0px;
+        margin: 0px 20px;
 
         &::-webkit-scrollbar{
             display: none;
@@ -17,7 +18,7 @@
 
     //Contenedor de objetos ("item")
     &__items{
-            
+        
         display: flex;
 
         &:hover{
@@ -58,6 +59,7 @@
         &-left{
             transform: scaleX(-1);
             bottom:0px;
+            left: 0px;
             
         }
         &-right{
@@ -66,8 +68,16 @@
         }
 
         &:hover{
-            background-color: rgba(0,0,0,0.3);
+            background-color: rgba(0,0,0,0.1);
         }
     }
 
+}
+
+@media (max-width:420px){
+    .categoria{
+        &__buttons{
+            opacity: 0;
+        }
+    }
 }

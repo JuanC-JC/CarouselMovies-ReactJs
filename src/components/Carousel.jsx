@@ -21,12 +21,18 @@ export default function Carousel({ children }) {
       </div>
 
       <div className='categoria__buttons'>
-        <div role='button' tabIndex='0' onClick={() => { handleMoveLeft(); }} id='btn-left' name='btn-left' className='categoria__button categoria__button-left'>
-          <div className='imagen' />
-        </div>
-        <div role='button' tabIndex='0' onClick={() => { hanldeMoveRight(); }} id='btn-right' name='btn-right' className='categoria__button categoria__button-right'>
-          <div className='imagen' />
-        </div>
+
+        <div
+          aria-label='move carousel to left'
+          role='button'
+          tabIndex='0'
+          onClick={() => { handleMoveLeft(); }}
+          id='btn-left'
+          name='btn-left'
+          className='categoria__button categoria__button-left'
+        />
+
+        <div aria-label='move carousel to right' role='button' tabIndex='0' onClick={() => { hanldeMoveRight(); }} id='btn-right' name='btn-right' className='categoria__button categoria__button-right' />
       </div>
     </div>
   );

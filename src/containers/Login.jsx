@@ -1,25 +1,66 @@
-import React from 'react';
+import React, { useReducer } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 import '../components/styles/Login.scss';
 import googleIcon from '../components/assets/google-icon.png';
 import twitterIcon from '../components/assets/twitter-icon.png';
+import { loginRequest } from '../actions';
 
-export default function Login() {
+function Login(props) {
+
+  const [form, setForm] = useReducer(
+    (state, newState) => ({ ...state, ...newState }),
+    {
+      email: '',
+      password: '',
+    },
+  );
+
+  const handleInput = (e) => {
+    setForm({ [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    props.loginRequest(form);
+    props.history.push('/');
+  };
+
   return (
     <section className='login'>
       <section className='login__container'>
         <h2>Inicia sesión</h2>
-        <form className='login__container--form'>
-          <input className='input' type='text' placeholder='Correo' />
-          <input className='input' type='password' placeholder='Contraseña' />
-          <button type='button' className='button'>Iniciar sesión</button>
+        <form className='login__container--form' onSubmit={handleSubmit}>
+          <input
+            className='input'
+            type='text'
+            placeholder='Email'
+            name='email'
+            value={form.email || ''}
+            onChange={handleInput}
+            required
+          />
+          <input
+            className='input'
+            type='password'
+            placeholder='Password'
+            name='password'
+            value={form.password}
+            onChange={handleInput}
+            autoComplete='false'
+            required
+          />
+
+          <button type='submit' className='button'>Iniciar sesión</button>
+
           <div className='login__container--remember-me'>
             <label htmlFor='cbox1'>
               <input type='checkbox' id='cbox1' value='first_checkbox' />
               Recuérdame
             </label>
-            <a href='/'>Olvidé mi contraseña</a>
+            <Link to='/'> Olvidé mi contraseña </Link>
           </div>
+
         </form>
         <section className='login__container--social-media'>
           <div>
@@ -39,3 +80,9 @@ export default function Login() {
     </section>
   );
 };
+
+const mapDispatchToProps = {
+  loginRequest,
+};
+
+export default connect(null, mapDispatchToProps)(Login);

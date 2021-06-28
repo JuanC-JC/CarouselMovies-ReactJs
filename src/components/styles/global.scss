@@ -2,13 +2,13 @@ body{
  margin: 0;
  color: white;
  font-family: 'Muli', sans-serif;
- background: #8f57fd;
+ background: linear-gradient(#000000, #7442d8);
 }
-
 
 .main{
   display: flex;
   flex-direction: column;
+  padding: 10px;
 }
 
 //va por fuera del elemento
