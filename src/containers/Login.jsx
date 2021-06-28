@@ -6,6 +6,8 @@ import googleIcon from '../components/assets/google-icon.png';
 import twitterIcon from '../components/assets/twitter-icon.png';
 import { loginRequest } from '../actions';
 
+// TODO: add css for media < 420px
+
 function Login(props) {
 
   const [form, setForm] = useReducer(
