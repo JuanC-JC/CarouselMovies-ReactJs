@@ -1,6 +1,8 @@
+import { createStore } from 'redux';
 import data from '../db/data.json';
+import reducer from '../reducers';
 
-export const loadState = () => {
+const loadState = () => {
 
   const { initialState } = data;
   initialState.user = {};
@@ -21,10 +23,18 @@ export const loadState = () => {
   }
 };
 
-export const saveState = (state) => {
+const saveState = (state) => {
   try {
     const newState = JSON.stringify(state);
     sessionStorage.setItem('state', newState);
   } catch (error) {
   }
 };
+
+const store = createStore(reducer, loadState());
+
+store.subscribe(() => {
+  saveState(store.getState());
+});
+
+export default store;
