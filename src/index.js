@@ -6,12 +6,41 @@ import reducer from './reducers';
 import App from './routes/App';
 import data from './db/data.json';
 
-const { initialState } = data;
+const loadState = () => {
 
-initialState.user = {};
-initialState.playing = {};
+  const { initialState } = data;
+  initialState.user = {};
+  initialState.playing = {};
 
-const store = createStore(reducer, initialState);
+  try {
+    const localState = sessionStorage.getItem('state');
+
+    if (localState === null) {
+      return initialState;
+    }
+
+    return JSON.parse(localState);
+
+  } catch (error) {
+    console.log('error');
+    return initialState;
+  }
+};
+
+const saveState = (state) => {
+  try {
+    const newState = JSON.stringify(state);
+    sessionStorage.setItem('state', newState);
+  } catch (error) {
+
+  }
+};
+
+const store = createStore(reducer, loadState());
+
+store.subscribe(() => {
+  saveState(store.getState());
+});
 
 ReactDOM.render(
   <Provider store={store}>

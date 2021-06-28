@@ -12,8 +12,6 @@ export default function Carousel({ children }) {
     carousel.current.scrollLeft += 420;
   };
 
-  // const [videos, setVideos] = useState([]);
-
   return (
     <div ref={carousel} className='categoria__carousel'>
       <div className='categoria__items'>
