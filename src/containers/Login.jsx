@@ -10,7 +10,7 @@ import { loginRequest } from '../actions';
 
 function Login(props) {
 
-  const [form, setForm] = useReducer(
+  const [formUserLogin, setFormUserLogin] = useReducer(
     (state, newState) => ({ ...state, ...newState }),
     {
       email: '',
@@ -19,12 +19,12 @@ function Login(props) {
   );
 
   const handleInput = (e) => {
-    setForm({ [e.target.name]: e.target.value });
+    setFormUserLogin({ [e.target.name]: e.target.value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    props.loginRequest(form);
+    props.loginRequest(formUserLogin);
     props.history.push('/');
   };
 
@@ -38,7 +38,7 @@ function Login(props) {
             type='text'
             placeholder='Email'
             name='email'
-            value={form.email || ''}
+            value={formUserLogin.email || ''}
             onChange={handleInput}
             required
           />
@@ -47,7 +47,7 @@ function Login(props) {
             type='password'
             placeholder='Password'
             name='password'
-            value={form.password}
+            value={formUserLogin.password}
             onChange={handleInput}
             autoComplete='false'
             required

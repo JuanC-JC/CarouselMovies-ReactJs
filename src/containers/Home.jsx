@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import { connect } from 'react-redux';
 import '../components/styles/global.scss';
@@ -7,13 +8,13 @@ import Categorie from '../components/Categorie';
 import Carousel from '../components/Carousel';
 import CarouselItem from '../components/CarouselItem';
 
-function Home({ myList, trends, originals }) {
+function Home({ myList, trends, originals, user }) {
 
   return (
     <section className='main'>
       <Search />
       <Categories>
-        {myList.length > 0 && (
+        {myList.length > 0 && user.email && (
           <Categorie title='Mi categoria'>
             <Carousel>
               {myList.map((item) => <CarouselItem key={item.id} isList={true} {...item} />)}
@@ -41,6 +42,7 @@ const mapStateToProps = (state) => {
     myList: state.myList,
     trends: state.trends,
     originals: state.originals,
+    user: state.user,
   };
 };
 

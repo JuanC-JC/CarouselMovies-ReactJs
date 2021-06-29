@@ -3,11 +3,16 @@ import './styles/Header.scss';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import gravatar from '../utils/gravatar';
+import { logoutRequest } from '../actions';
 
 function Header(props) {
 
   const { user } = props;
   const hasUser = Object.keys(user).length > 0;
+
+  const handleLogout = (e) => {
+    props.logoutRequest();
+  };
 
   return (
     <header className='cabezera'>
@@ -30,7 +35,7 @@ function Header(props) {
           {hasUser ? (
             <>
               <li className='list__item'><Link to='/'>{user.name}</Link></li>
-              <li className='list__item'><Link to='#logout'>Sign off</Link></li>
+              <li className='list__item'><Link to='/' onClick={handleLogout}>Sign off</Link></li>
             </>
           ) :
             <li className='list__item'><Link to='/login'>Login</Link></li>}
@@ -49,4 +54,8 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, null)(Header);
+const mapDispatchToProps = {
+  logoutRequest,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
