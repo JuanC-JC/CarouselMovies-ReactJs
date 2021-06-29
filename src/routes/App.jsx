@@ -5,17 +5,25 @@ import Login from '../containers/Login';
 import Register from '../containers/Register';
 import NotFound from '../containers/NotFound';
 import Layout from '../components/Layout';
+import Player from '../components/Player';
 
 const App = () => (
   <BrowserRouter>
-    <Layout>
-      <Switch>
-        <Route exact path='/' component={Home} />
-        <Route exact path='/login' component={Login} />
-        <Route exact path='/register' component={Register} />
-        <Route exact component={NotFound} />
-      </Switch>
-    </Layout>
+    <Switch>
+      <Route path='/:path?' exact>
+        <Layout>
+          <Switch>
+            <Route exact path='/' component={Home} />
+            <Route exact path='/login' component={Login} />
+            <Route exact path='/register' component={Register} />
+            <Route exact component={NotFound} />
+          </Switch>
+        </Layout>
+      </Route>
+
+      <Route exact path='/player/:id' component={Player} />
+
+    </Switch>
   </BrowserRouter>
 );
 

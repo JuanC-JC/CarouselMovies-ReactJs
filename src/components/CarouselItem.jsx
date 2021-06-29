@@ -1,8 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { setFavorite, deleteFavorite } from '../actions';
 import './styles/CarouselItem.scss';
+
+//BUG: Mientras no exista un usuario activo no puede agregar a mi lista los elementos
 
 function CarouselItem(props) {
 
@@ -25,7 +28,9 @@ function CarouselItem(props) {
       <img className='item__img' src={cover} alt={title} />
       <div className='item__details'>
         <div className='details__buttons'>
-          <div className='details__play details__button' />
+          <Link to={`/player/${id}`}>
+            <div className='details__play details__button' />
+          </Link>
 
           {isList ? (
             <div

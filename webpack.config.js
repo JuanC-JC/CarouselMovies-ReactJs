@@ -10,8 +10,7 @@ module.exports = {
     path: path.resolve(__dirname, 'build'),
     filename: 'bundle.js',
     clean: true,
-    // assetModuleFilename: 'images/[hash][ext][query]',
-    // publicPath: '../',
+    publicPath: '/',
   },
   resolve: {
     extensions: ['.js', '.jsx'],
