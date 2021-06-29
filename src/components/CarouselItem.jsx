@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -7,11 +7,18 @@ import './styles/CarouselItem.scss';
 
 function CarouselItem(props) {
 
+  const myRef = useRef(null);
+
   const { user, isList, id, cover, title, year, contentRating, duration } = props;
 
   const hasUser = Object.keys(user).length > 0;
 
   const handleSetFavorite = () => {
+    console.log('cambiando el color', myRef.current);
+
+    myRef.current.style.pointerEvents = 'none';
+    myRef.current.click();
+
     props.setFavorite({
       id, cover, title, year, contentRating, duration,
     });
@@ -24,7 +31,7 @@ function CarouselItem(props) {
   };
 
   return (
-    <div className='categoria__item'>
+    <div ref={myRef} className='categoria__item'>
       <img className='item__img' src={cover} alt={title} />
       <div className='item__details'>
         <div className='details__buttons'>
