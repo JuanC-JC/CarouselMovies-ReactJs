@@ -52,10 +52,16 @@
   justify-content: space-around;
   min-height: 500px;
   padding: 40px 50px 40px;
-  width: 300px;
+  width: 78%;
+  max-width: 300px;
+  min-width: 250px;
 
   &>h2{
     margin: 10px 0px 20px;
+  }
+
+  @media(max-width:420px){
+    padding: 40px 30px;
   }
 
 }

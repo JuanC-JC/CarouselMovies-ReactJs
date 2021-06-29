@@ -5,11 +5,11 @@ import { connect } from 'react-redux';
 import { setFavorite, deleteFavorite } from '../actions';
 import './styles/CarouselItem.scss';
 
-//BUG: Mientras no exista un usuario activo no puede agregar a mi lista los elementos
-
 function CarouselItem(props) {
 
-  const { isList, id, cover, title, year, contentRating, duration } = props;
+  const { user, isList, id, cover, title, year, contentRating, duration } = props;
+
+  const hasUser = Object.keys(user).length > 0;
 
   const handleSetFavorite = () => {
     props.setFavorite({
@@ -37,7 +37,7 @@ function CarouselItem(props) {
               aria-label='remove from my list'
               role='button'
               tabIndex='0'
-              onClick={handleDeleteFavorite}
+              onClick={hasUser ? handleDeleteFavorite : undefined}
               className='details__remove details__button'
             />
           ) : (
@@ -45,7 +45,7 @@ function CarouselItem(props) {
               aria-label='add to my list'
               role='button'
               tabIndex='0'
-              onClick={handleSetFavorite}
+              onClick={hasUser ? handleSetFavorite : undefined}
               className='details__add details__button'
             />
           )}
@@ -72,10 +72,16 @@ CarouselItem.propTypes = {
   duration: PropTypes.number,
 };
 
+const mapStateToProps = (state) => {
+  return {
+    user: state.user,
+  };
+};
+
 //enviar funciones (actions)
 const mapDispatchToProps = {
   setFavorite,
   deleteFavorite,
 };
 
-export default connect(null, mapDispatchToProps)(CarouselItem);
+export default connect(mapStateToProps, mapDispatchToProps)(CarouselItem);

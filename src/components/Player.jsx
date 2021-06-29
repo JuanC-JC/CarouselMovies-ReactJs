@@ -1,10 +1,9 @@
+/* eslint-disable react/destructuring-assignment */
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import './styles/Player.scss';
-// import { Redirect } from 'react-router-dom';
 import { Redirect } from 'react-router-dom';
 import { getVideoSource } from '../actions';
-import NotFound from '../containers/NotFound';
+import './styles/Player.scss';
 
 function Player(props) {
 
@@ -13,7 +12,6 @@ function Player(props) {
 
   const hasPlaying = Object.keys(props.playing).length > 0 ;
 
-  //cambiar el estado de playing mediante la action, asignando el video que mandaron a reproducir aca
   useEffect(() => {
     props.getVideoSource(props.match.params.id);
     setLoading(false);
@@ -56,10 +54,6 @@ function Player(props) {
   );
 
 };
-
-//si termino de cargar y el video existe mostarlo
-//si el id existe pero el video no carga hacer el overlay
-//si el id no existe redirect a 404
 
 const mapStateToProps = (state) => {
   return {
