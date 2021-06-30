@@ -5,9 +5,6 @@ import { connect } from 'react-redux';
 import { setFavorite, deleteFavorite } from '../actions';
 import './styles/CarouselItem.scss';
 
-//TODO: el opacitiy 0 en los botones de mover igual sigue dejandose seleccionar, hay que eliminarlo
-//TODO: Determinar si en redux puedo guardar objetos ref como props - para saber cual es el que esta OPEN
-//TODO: EventListener en el body para cerrar cuando se haga click en otro lado
 function CarouselItem(props) {
 
   const myRef = useRef(null);
@@ -17,10 +14,19 @@ function CarouselItem(props) {
   const hasUser = Object.keys(user).length > 0;
 
   const handleClick = (e) => {
-    if (!isHoverAvaliable) {
-      myRef.current.setAttribute('style', 'transform: scale(1.3); z-index: 2');
 
-      myRef.current.querySelector('.item__details').setAttribute('style', 'visibility:visible; opacity:1');
+    if (!isHoverAvaliable) {
+
+      //select all categoria__items and remove his clases
+      document.querySelectorAll('.categoria__item').forEach((item) => item.classList.remove('isClicked', 'oneSiblingIsClicked'));
+
+      //add only his siblings and himself the class for opacity 0.3
+      [...myRef.current.parentNode.children].forEach((element) => element.classList.add('oneSiblingIsClicked'));
+
+      //actualy element is clicked and remove if him was a brother of one clicked
+      myRef.current.classList.add('isClicked');
+      myRef.current.classList.remove('oneSiblingIsClicked');
+
     }
   };
 

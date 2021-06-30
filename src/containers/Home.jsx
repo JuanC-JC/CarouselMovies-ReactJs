@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import '../components/styles/global.scss';
 import Search from '../components/Search';
@@ -8,7 +8,32 @@ import Categorie from '../components/Categorie';
 import Carousel from '../components/Carousel';
 import CarouselItem from '../components/CarouselItem';
 
-function Home({ myList, trends, originals, user }) {
+function Home({ isHoverAvaliable, myList, trends, originals, user }) {
+
+  //remove all events from categoria__items when is add in myList
+  useEffect(() => {
+    if (isHoverAvaliable) {
+      const carouselItems = document.querySelectorAll('.categoria__item');
+      carouselItems.forEach((item) => item.classList.remove('oneSiblingIsClicked', 'isClicked'));
+    }
+  }, [myList]);
+
+  //listener for close the elemetns, every time that value of isHoverAvaliable change we assing again the event
+  useEffect(() => {
+    if (!isHoverAvaliable) {
+      document.querySelector('.main').onclick = (e) => {
+        if (!e.target.classList.contains('item__img')) {
+          document.querySelectorAll('.categoria__item').forEach((item) => item.classList.remove('isClicked', 'oneSiblingIsClicked'));
+        }
+      };
+    }
+
+    return (() => {
+      const main = document.querySelector('.main');
+      main ? main.onclick = null : undefined;
+    });
+
+  }, [isHoverAvaliable]);
 
   return (
     <section className='main'>
@@ -43,6 +68,7 @@ const mapStateToProps = (state) => {
     trends: state.trends,
     originals: state.originals,
     user: state.user,
+    isHoverAvaliable: state.isHoverAvaliable,
   };
 };
 
