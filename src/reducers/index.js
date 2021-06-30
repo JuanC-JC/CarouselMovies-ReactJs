@@ -37,6 +37,11 @@ const reducer = (state, action) => {
         state.originals.find((item) => item.id === Number(action.payload)) ||
         [],
       };
+    case actions.setHoverAvaliable:
+      return {
+        ...state,
+        isHoverAvaliable: action.payload,
+      };
     default:
       return state;
   }

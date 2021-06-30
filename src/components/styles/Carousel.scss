@@ -18,24 +18,13 @@
 
     //Contenedor de objetos ("item")
     &__items{
-        
         display: flex;
 
-        &:hover{
-
-            //bajarle la visibilidad a todos los elementos
+        &.opacity{
             & .categoria__item{
                 opacity: 0.3;
-                background-color: lightblue;
-            }
-
-            //al elemento seleccionado hay que hacerlo visible
-            & .categoria__item:hover{
-                background: palevioletred;
-                opacity: 1; 
             }
         }
-
     }
 
     &__buttons{
@@ -72,6 +61,7 @@
         }
     }
 
+
 }
 
 @media (max-width:420px){
@@ -81,3 +71,31 @@
         }
     }
 }
+
+
+
+@media (hover:hover){
+    .categoria {
+        &__items{
+            &:hover{
+                & .categoria__item{
+                    opacity: 0.3;
+
+                    &:hover{
+                        opacity: 1; 
+                    }
+                }
+            }
+        }
+    }
+}
+
+//redux para mantener una referencia de quien es el que esta modal
+
+//aplicar opacity a cateogira_items
+    //al elemento que se le dio click aplicarle opacity 1 scalarlo y z-index2
+        //los botones aparecen con display none, a si que debo hacerlo aparecer
+
+
+    //cuando le den click al eleiminar o el play
+    // hacer un toggle y qutiar las 3 clases añadidas

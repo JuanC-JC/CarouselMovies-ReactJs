@@ -5,6 +5,7 @@ export const actions = {
   logoutRequest: 'LOGOUT_REQUEST',
   registerRequest: 'REGISTER_REQUEST',
   getVideoSource: 'GET_VIDEO_SOURCE',
+  setHoverAvaliable: 'SET_HOVER_AVALIABLE',
 };
 
 export const setFavorite = (payload) => {
@@ -45,6 +46,13 @@ export const registerRequest = (payload) => {
 export const getVideoSource = (payload) => {
   return {
     type: actions.getVideoSource,
+    payload,
+  };
+};
+
+export const setHoverAvaliable = (payload) => {
+  return {
+    type: actions.setHoverAvaliable,
     payload,
   };
 };

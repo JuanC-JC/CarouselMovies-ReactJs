@@ -5,20 +5,26 @@ import { connect } from 'react-redux';
 import { setFavorite, deleteFavorite } from '../actions';
 import './styles/CarouselItem.scss';
 
+//TODO: el opacitiy 0 en los botones de mover igual sigue dejandose seleccionar, hay que eliminarlo
+//TODO: Determinar si en redux puedo guardar objetos ref como props - para saber cual es el que esta OPEN
+//TODO: EventListener en el body para cerrar cuando se haga click en otro lado
 function CarouselItem(props) {
 
   const myRef = useRef(null);
 
-  const { user, isList, id, cover, title, year, contentRating, duration } = props;
+  const { isHoverAvaliable, user, isList, id, cover, title, year, contentRating, duration } = props;
 
   const hasUser = Object.keys(user).length > 0;
 
+  const handleClick = (e) => {
+    if (!isHoverAvaliable) {
+      myRef.current.setAttribute('style', 'transform: scale(1.3); z-index: 2');
+
+      myRef.current.querySelector('.item__details').setAttribute('style', 'visibility:visible; opacity:1');
+    }
+  };
+
   const handleSetFavorite = () => {
-    console.log('cambiando el color', myRef.current);
-
-    myRef.current.style.pointerEvents = 'none';
-    myRef.current.click();
-
     props.setFavorite({
       id, cover, title, year, contentRating, duration,
     });
@@ -31,7 +37,7 @@ function CarouselItem(props) {
   };
 
   return (
-    <div ref={myRef} className='categoria__item'>
+    <div ref={myRef} tabIndex='0' role='button' aria-label='carousel item' className='categoria__item' onClick={handleClick}>
       <img className='item__img' src={cover} alt={title} />
       <div className='item__details'>
         <div className='details__buttons'>
@@ -82,6 +88,7 @@ CarouselItem.propTypes = {
 const mapStateToProps = (state) => {
   return {
     user: state.user,
+    isHoverAvaliable: state.isHoverAvaliable,
   };
 };
 

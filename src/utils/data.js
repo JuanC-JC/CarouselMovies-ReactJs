@@ -7,6 +7,7 @@ const loadState = () => {
   const { initialState } = data;
   initialState.user = {};
   initialState.playing = {};
+  initialState.isHoverAvaliable = window.matchMedia('(hover:hover)').matches;
 
   try {
     const localState = sessionStorage.getItem('state');

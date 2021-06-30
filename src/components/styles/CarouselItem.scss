@@ -1,5 +1,29 @@
 @import "./Variables.scss";
 
+//only when is dispositive with hover
+@media (hover:hover){
+  .categoria__item {
+    &:hover{
+
+      transform: scale(1.3);
+      z-index: 1;
+  
+      .item__details {
+        visibility: visible;
+        opacity: 1;
+      }
+
+      &:first-child{
+        transform: scale(1.3) translateX(10px);
+      }
+
+    }
+
+  }
+
+}
+
+
 .categoria__item {
   min-width: $width-category-item;
   height: $height-category-item;
@@ -8,32 +32,15 @@
   transition: 0.5s transform;
   overflow: hidden;
   cursor: pointer;
-  // position: relative;
-
-  //seleccion de item
-  &:hover {
-    //escalar el elemento
-    transform: scale(1.3);
-
-    //over his siblings and the buttons of scroll
-    z-index: 1;
-  }
+  position: relative;
 
   &:last-child {
     transform-origin: center right;
   }
 
-  //el primer item tiene como propiedad transformarse desde la izquierda
   &:first-child {
     transform-origin: center left;
-
-    &:hover{
-      transform: scale(1.3) translateX(10px);;
-      // transform: 
-    }
   }
-
-
 
   img {
     object-fit: cover;
@@ -41,6 +48,7 @@
     height: 250px;
   }
 
+  //hidden by defect
   .item__details {
     display: flex;
     flex-direction: column;
@@ -89,10 +97,12 @@
     }
   }
 
-  &:hover {
-    .item__details {
-      visibility: visible;
-      opacity: 1;
-    }
-  }
+
 }
+
+
+//cuando esta habil hover todo funciona melo
+
+//para cuando no exista hover entonces manejar con js
+  //click -> transform 1.3
+  //aclarar los demas de sus hermanos
