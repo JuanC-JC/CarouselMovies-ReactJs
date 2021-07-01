@@ -1,6 +1,8 @@
-import { createStore } from 'redux';
+import { createStore, compose } from 'redux';
 import data from '../db/data.json';
 import reducer from '../reducers';
+
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const loadState = () => {
 
@@ -32,7 +34,7 @@ const saveState = (state) => {
   }
 };
 
-const store = createStore(reducer, loadState());
+const store = createStore(reducer, loadState(), composeEnhancers());
 
 store.subscribe(() => {
   saveState(store.getState());
