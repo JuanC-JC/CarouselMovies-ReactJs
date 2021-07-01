@@ -22,7 +22,6 @@ const App = () => (
       </Route>
 
       <Route exact path='/player/:id' component={Player} />
-
     </Switch>
   </BrowserRouter>
 );

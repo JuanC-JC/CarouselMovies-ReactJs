@@ -14,7 +14,7 @@ function CarouselItem(props) {
   const hasUser = Object.keys(user).length > 0;
 
   const handleClick = (e) => {
-
+    console.log(isHoverAvaliable);
     if (!isHoverAvaliable) {
 
       //select all categoria__items and remove his clases
