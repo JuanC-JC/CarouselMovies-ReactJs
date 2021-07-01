@@ -20,7 +20,7 @@
 
         &:hover .menu__list{
             visibility: visible;
-            transform: translateY(2px);            //mueve en y a la posicion 0 original
+            transform: translateY(10px);            //mueve en y a la posicion 0 original
             opacity: 1;                          //asigna opacidad
             transition-delay: 0s;                  //coloca que todas las transiciones no tengan delay a si la visibilidad es inmediata
         }
@@ -54,19 +54,17 @@
     position: absolute;
     list-style: none;
     flex-direction: column;
-    background-color: #14143c;
+    background-color: #090925;
     margin: 0;
     opacity: 0;
-    padding: 0;
+    border-radius: 0 0 5px 5px;
     left: -10px;
     padding: 5px 10px 5px 20px;
     width: calc(100% + 10px);
     transform: translateY(-20px);
 
     //transform dura 0.5s y tiene 0s delay, la opacity tiene 0.5s y 0 delay, la visibilidad 
-    transition: transform 0.3s linear 0s, opacity 0.3s linear 0s, visibility 0s linear 0.3s;
-
-    // box-shadow: 2px 2px 8px #7442d8;
+    transition: transform 0.4s linear 0s, opacity 0.4s linear 0s, visibility 0s linear 0.4s;
 
     .list__item{
         padding: 5px 0;

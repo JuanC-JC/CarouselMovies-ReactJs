@@ -12,28 +12,26 @@ function Home({ isHoverAvaliable, myList, trends, originals, user }) {
 
   //remove all events from categoria__items when is add in myList
   useEffect(() => {
-    if (isHoverAvaliable) {
+    if (!isHoverAvaliable) {
       const carouselItems = document.querySelectorAll('.categoria__item');
       carouselItems.forEach((item) => item.classList.remove('oneSiblingIsClicked', 'isClicked'));
     }
   }, [myList]);
 
-  //listener for close the elemetns, every time that value of isHoverAvaliable change we assing again the event
+  //listener for close the clicked element;
   useEffect(() => {
-    if (!isHoverAvaliable) {
-      document.querySelector('.main').onclick = (e) => {
-        if (!e.target.classList.contains('item__img')) {
-          document.querySelectorAll('.categoria__item').forEach((item) => item.classList.remove('isClicked', 'oneSiblingIsClicked'));
-        }
-      };
-    }
+    document.querySelector('.main').onclick = (e) => {
+      if (!e.target.classList.contains('item__img')) {
+        document.querySelectorAll('.categoria__item').forEach((item) => item.classList.remove('isClicked', 'oneSiblingIsClicked'));
+      }
+    };
 
     return (() => {
       const main = document.querySelector('.main');
       main ? main.onclick = null : undefined;
     });
 
-  }, [isHoverAvaliable]);
+  }, []);
 
   return (
     <section className='main'>

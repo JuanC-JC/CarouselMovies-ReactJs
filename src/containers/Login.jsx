@@ -45,7 +45,6 @@ function Login(props) {
             type='password'
             placeholder='Password'
             name='password'
-            value={formUserLogin.password}
             onChange={handleInput}
             autoComplete='false'
             required

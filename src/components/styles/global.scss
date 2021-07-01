@@ -3,7 +3,7 @@ body{
  color: white;
  min-height: 100vh;
  font-family: 'Muli', sans-serif;
- background: linear-gradient(#000000, #7442d8);
+ background: linear-gradient(#000000, #3e1d80);
 }
 
 .main{
@@ -16,3 +16,14 @@ body{
 ::placeholder{
   color: white;
 }   
+
+//truco para evitar el fill del formulario
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-transition: "color 9999s ease-out, background-color 9999s ease-out";
+    -webkit-transition-delay: 9999s;
+    transition: 9999s;
+    transition-delay: 9999s;
+}
