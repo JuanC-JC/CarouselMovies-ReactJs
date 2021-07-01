@@ -59,7 +59,8 @@
     opacity: 0;
     border-radius: 0 0 5px 5px;
     left: -10px;
-    padding: 5px 10px 5px 20px;
+    padding: 5px;
+    text-align: center;
     width: calc(100% + 10px);
     transform: translateY(-20px);
 
@@ -76,6 +77,10 @@
 
         border-bottom: 1px solid white;
 
+        &:hover{
+            background-color: rgba(255,255,255, 0.1);
+
+        }
     }
 
     .list__item:last-of-type{

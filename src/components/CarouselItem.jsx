@@ -48,7 +48,7 @@ function CarouselItem(props) {
       <div className='item__details'>
         <div className='details__buttons'>
           <Link to={`/player/${id}`}>
-            <div className='details__play details__button' />
+            <div className='details__play details__button' title='Play Movie' />
           </Link>
 
           {isList ? (
@@ -56,6 +56,7 @@ function CarouselItem(props) {
               aria-label='remove from my list'
               role='button'
               tabIndex='0'
+              title='Remove from your list'
               onClick={hasUser ? handleDeleteFavorite : undefined}
               className='details__remove details__button'
             />
@@ -64,6 +65,7 @@ function CarouselItem(props) {
               aria-label='add to my list'
               role='button'
               tabIndex='0'
+              title='Add to your list'
               onClick={hasUser ? handleSetFavorite : undefined}
               className='details__add details__button'
             />

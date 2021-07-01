@@ -34,13 +34,13 @@ function Header(props) {
 
           {hasUser ? (
             <>
-              <li className='list__item'><Link to='/'>{user.name}</Link></li>
-              <li className='list__item'><Link to='/' onClick={handleLogout}>Sign off</Link></li>
+              <li className='list__item'><Link to='/'>{user.name ? user.name : 'Username'}</Link></li>
+              <li className='list__item'><Link to='/' onClick={handleLogout}>Logout</Link></li>
             </>
           ) :
             <li className='list__item'><Link to='/login'>Login</Link></li>}
 
-          <li className='list__item'><Link to='/#help'>Help</Link></li>
+          <li className='list__item'><Link to='/#AboutUs'>About Us</Link></li>
         </ul>
       </nav>
 
