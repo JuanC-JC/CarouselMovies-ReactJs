@@ -13,16 +13,14 @@ const App = () => (
 
       <Route exact path='/player/:id' component={Player} />
 
-      <Route path='/:path?/:path?' exact>
-        <Layout>
-          <Switch>
-            <Route exact path='/' component={Home} />
-            <Route exact path='/login' component={Login} />
-            <Route exact path='/register' component={Register} />
-            <Route exact component={NotFound} />
-          </Switch>
-        </Layout>
-      </Route>
+      <Layout>
+        <Switch>
+          <Route exact path='/' component={Home} />
+          <Route exact path='/login' component={Login} />
+          <Route exact path='/register' component={Register} />
+          <Route exact component={NotFound} />
+        </Switch>
+      </Layout>
 
     </Switch>
   </BrowserRouter>
