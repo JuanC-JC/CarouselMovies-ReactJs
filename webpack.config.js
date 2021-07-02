@@ -1,7 +1,7 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-// const CopyPlugin = require('copy-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
 
 module.exports = (env) => {
@@ -67,6 +67,14 @@ module.exports = (env) => {
       new Dotenv({
         path: `./.env.${env.development ? 'development' : 'production'}`,
         systemvars: true,
+      }),
+      new CopyPlugin({
+        patterns: [
+          {
+            from: './public/netlify.toml',
+            to: './netlify.toml',
+          },
+        ],
       }),
     ],
   };
