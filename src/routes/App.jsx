@@ -10,7 +10,10 @@ import Player from '../components/Player';
 const App = () => (
   <BrowserRouter>
     <Switch>
-      <Route path='/:path?' exact>
+
+      <Route exact path='/player/:id' component={Player} />
+
+      <Route path='/:path?/:path?' exact>
         <Layout>
           <Switch>
             <Route exact path='/' component={Home} />
@@ -21,7 +24,6 @@ const App = () => (
         </Layout>
       </Route>
 
-      <Route exact path='/player/:id' component={Player} />
     </Switch>
   </BrowserRouter>
 );

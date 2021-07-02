@@ -69,10 +69,13 @@
 
     .list__item{
         padding: 5px 0;
+        cursor: pointer;
         a{  
+            display: block;
             word-wrap: break-word;
             text-decoration: none;
             color: white;
+            width: 100%;
         }
 
         border-bottom: 1px solid white;

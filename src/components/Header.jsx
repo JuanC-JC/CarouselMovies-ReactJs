@@ -34,7 +34,7 @@ function Header(props) {
 
           {hasUser ? (
             <>
-              <li className='list__item'><Link to='/'>{user.name ? user.name : 'Username'}</Link></li>
+              <Link to='/'><li className='list__item'>{user.name ? user.name : 'Username'}</li></Link>
               <li className='list__item'><Link to='/' onClick={handleLogout}>Logout</Link></li>
             </>
           ) :

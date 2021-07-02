@@ -12,6 +12,14 @@ body{
   padding: 10px;
 }
 
+.not-found{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+}
+
 //va por fuera del elemento
 ::placeholder{
   color: white;

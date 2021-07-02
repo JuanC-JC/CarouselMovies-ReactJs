@@ -72,5 +72,3 @@ module.exports = (env) => {
   };
 
 };
-
-//TODO: BUG EL CLICK DE AGREGAR A MYLIST NO CIERRA EL MODAL ACTUAL
