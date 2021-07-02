@@ -40,7 +40,7 @@ _Necesario `npm`_
 
 ## 4. Clone and use 
 
-Clonar el repositorio e instalar dependencias
+Clonar el repositorio 
 ~~~
   git clone https://github.com/JuanC-JC/CarouselMovies-ReactJs
   npm install 
@@ -51,16 +51,12 @@ Ejecutar en localhost
   npm run start
 ~~~
 
-Deploy (bundle) 
+Deploy (bundle) y ejecutar
 ~~~
   npm run build
   npm install serve -g 
-  serve -s (folder)
+  serve -s dist
 ~~~
-
-
-
-
 
 ### Links del proyecto
 - [Deploy](https://carouselmovies.netlify.app/)
